@@ -6,7 +6,7 @@ clear
 # 脚本变量
 system_version=`cat /etc/redhat-release`
 version_number=`cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\..*/\1/' > /dev/null 2>&1`
-trojan_version="rojan_chear.sh"
+trojan_version="trojan_chear.sh"
 user_key="PIWJTDQxx0HKwKUQeZIqTbKL"
 trojan_download="https://security.cmstop.com/.stone/soft/trojan/$trojan_version"
 
