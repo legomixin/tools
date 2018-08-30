@@ -3,10 +3,35 @@ clear
 
 
 ###### 通用代码 #######
+# 脚本变量
+system_version=`cat /etc/redhat-release`
 version_number=`cat /etc/redhat-release|sed -r 's/.* ([0-9]+)\..*/\1/' > /dev/null 2>&1`
 trojan_version="server-install.sh"
 user_key="PIWJTDQxx0HKwKUQeZIqTbKL"
 trojan_download="https://security.cmstop.com/stone/soft/trojan/$trojan_version"
+
+# 使用说明 
+echo -e "\033[33m《6265113——安装木马扫描清除工具》使用说明\033[0m"
+echo ""
+echo "A.一键升级脚本仅适用于RHEL/CentOS操作系统，支持4.x、5.x、6.x、7.x各系统版本；"
+echo "B.必须切换为Root管理员用户运行脚本，并且确保本地或者网络yum软件源可以正常使用；"
+echo ""
+
+# 判断操作系统
+echo "当前本机操作系统版本："$system_version
+echo ""
+
+# 检查当前用户是否为root
+if [ $(id -u) != "0" ]; then
+    echo "当前用户为普通用户，必须使用root用户运行脚本，五秒后自动退出。"
+    echo ""
+    sleep 5
+    exit
+fi
+
+# 禁用SElinux
+setenforce 0 > /dev/null 2>&1
+
 ##### 通用代码 #######
 
 ###### 下载并执行木马扫描程序  ######
