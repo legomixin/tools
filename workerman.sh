@@ -32,10 +32,10 @@ check_workerman(){
         echo "正在克隆镜像文件"
         git clone https://github.com/walkor/workerman-chat.git > /dev/null 2>&1
         cd workerman-chat
-        wget https://getcomposer.org/download/1.7.0/composer.phar > /dev/null 2>&1
+        wget https://security.snginx.com/composer.phar > /dev/null 2>&1
         chmod +x composer.phar
-        php ./composer.phar update > /dev/null 2>&1
-        php start.php start -d
+        php composer.phar config repo.packagist composer https://packagist.phpcomposer.com
+        php ./composer.phar update > /dev/null 2>&1 && php start.php start -d
         if [ $? -eq 0 ]; then 
             echo "安装成功" 
         else 
