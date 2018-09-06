@@ -25,7 +25,7 @@ fi
 
 ###### 检测本环境是否支持安装 ######
 check_workerman(){
-    check=`curl -Ss $worcheck | php |awk -F" " '{print $5}' | grep OK | wc -l`
+    check=`curl -Ss http://www.workerman.net/check.php | php |awk -F" " '{print $5}' | grep OK | wc -l`
     if [ $check == 2 ];then
         echo "本环境符合安装workerman,正在开始安装依赖包"
         yum -y install git  > /dev/null 2>&1
