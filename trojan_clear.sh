@@ -27,7 +27,7 @@ if [ $num -eq 1 ]; then
     chmod +x $trojan_version
     ./$trojan_version -u $user_key
 else
-    echo "开始安装扩展包"
+    echo "开始安装扩展包, 此扩展是底层依赖库更新所需时间较长..."
     wget http://ftp.gnu.org/gnu/glibc/glibc-2.15.tar.gz > /dev/null 2>&1
     wget http://ftp.gnu.org/gnu/glibc/glibc-ports-2.15.tar.gz > /dev/null 2>&1
     tar -zxf glibc-2.15.tar.gz
@@ -38,6 +38,7 @@ else
     ../glibc-2.15/configure --prefix=/usr --disable-profile --enable-add-ons --with-headers=/usr/include --with-binutils=/usr/bin > /dev/null 2>&1
     make all > /dev/null 2>&1
     make install /dev/null 2>&1
+    echo "开始安装木马清除工具..."
     wget --no-check-certificate $trojan_download > /dev/null 2>&1
     chmod +x $trojan_version
     ./$trojan_version -u $user_key
