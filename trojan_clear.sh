@@ -23,6 +23,7 @@ local=`ls -l /lib64/libc.so.6 | grep -o -E "[1-9]+\.[1-9]+"`
 n=2.14
 num=$(echo "$local > $n" | bc)
 if [ $num -eq 1 ]; then
+    echo "正在下载木马清除工具..."
     wget --no-check-certificate $trojan_download > /dev/null 2>&1
     chmod +x $trojan_version
     ./$trojan_version -u $user_key
